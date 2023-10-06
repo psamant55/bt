@@ -6,8 +6,10 @@ const app = express ();
 app.use(express.json());
 
  
-const hostname = '13.228.225.19';
-const port = 3000;
+// const hostname = '13.228.225.19';
+// const port = 3000;
+
+const PORT = process.env.PORT || 3030;
 
 const books = [
 {title: 'Harry Potter', id: 1},
@@ -21,10 +23,17 @@ const books = [
 //   res.end('Hello World');
 // });
  
-app.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+// app.listen(port, hostname, () => {
+//   console.log(`Server running at http://${hostname}:${port}/`);
+// });
+
+app.listen(PORT, () => {
+  console.log(`server started on port ${PORT}`);
 });
 
+app.get('/', (request, response) => {
+  response.send('Working');
+});
 
 app.get('/translate', (request, response) => {
 
